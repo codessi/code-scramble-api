@@ -1,4 +1,4 @@
-ttps://frozen-bayou-71751.herokuapp.com/
+https://frozen-bayou-71751.herokuapp.com/
 
 https://github.com/codessi/code-scramble-client
 
