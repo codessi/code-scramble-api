@@ -6,6 +6,7 @@ const cors = require('cors')
 // require route files
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
+const codeQuizRoutes = require('./app/routes/codeQuiz_routes.js')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -18,6 +19,7 @@ const db = require('./config/db')
 
 // require configured passport authentication middleware
 const auth = require('./lib/auth')
+// const codequiz = require('./app/models/codeQuiz')????
 
 // define server and client ports
 // used for cors and local port declaration
@@ -34,7 +36,9 @@ mongoose.connect(db, {
 
 // instantiate express application object
 const app = express()
-
+app.get('/', (req, res) => {
+  res.send('hello world!')
+})
 // set CORS headers on response from this API using the `cors` NPM package
 // `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDevPort}` }))
@@ -61,6 +65,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
+app.use(codeQuizRoutes)
 app.use(exampleRoutes)
 app.use(userRoutes)
 
