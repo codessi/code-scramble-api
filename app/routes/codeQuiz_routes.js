@@ -16,8 +16,9 @@ const router = express.Router()
 // INDEX
 router.get('/codeQuizs', (req, res, next) => {
   CodeQuiz.find()
-  // this will find all the code 
+  // this will find all the code
     .then(codeQuizs => {
+      console.log('index success')
       return codeQuizs.map(codeQuiz => codeQuiz.toObject())
     })
     // then this will
